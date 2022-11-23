@@ -1,0 +1,17 @@
+Find all the topics and tasks which are thought in the month of October
+ db.day2.find({$or:[{"topics":{$topic}},{"tasks":{$task}}]})
+
+Find all the company drives which appeared between 15 oct-2020 and 31-oct-2020
+ db.day2.find({ u1 : { $gt : 15-oct-2020, $lt : 31-oct-2020}})
+
+Find all the company drives and students who are appeared for the placement.
+ db.day2.find().sort({placement:-1}),[{"company_drive":$drive}] 
+
+Find the number of problems solved by the user in codekata
+ db.stats()['objects'] - db.day2.codekata.count() - db.day2.namespaces.count() - db.day2.users.count()
+
+Find all the mentors with who has the mentee's count more than 15
+   db.day2.find().sort({mentee_count:-1}).limit(15) 
+
+Find the number of users who are absent and task is not submitted  between 15 oct-2020 and 31-oct-2020
+   db.day2.find({$nin:[{"users":{$absent}},{"tasks":{$submotted}}]}),{ u1 : { $gt :   15-oct-2020, $lt :  31-oct-2020}})
